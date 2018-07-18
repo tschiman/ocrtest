@@ -1,4 +1,4 @@
-package nameddto;
+package objectgraph;
 
 import java.util.ArrayList;
 import java.util.Comparator;
