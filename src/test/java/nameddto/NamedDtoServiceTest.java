@@ -17,7 +17,7 @@ public class NamedDtoServiceTest {
         NamedDto six = new NamedDto(6, "F");
         NamedDto seven = new NamedDto(7, "G");
 
-        one.setChildren(Arrays.asList(2,3,4));
+        one.setChildren(Arrays.asList(3,2,4));
         two.setChildren(Arrays.asList(6,7));
         six.setChildren(Arrays.asList(4));
 
@@ -30,7 +30,7 @@ public class NamedDtoServiceTest {
         namedDtoService.addNamedDto(six);
         namedDtoService.addNamedDto(seven);
 
-        String output = namedDtoService.findLongestString(one);
+        String output = namedDtoService.findLongestString(one.getId());
 
         Assert.assertEquals("ABFD", output);
     }

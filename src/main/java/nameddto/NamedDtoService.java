@@ -1,6 +1,9 @@
 package nameddto;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 
 public class NamedDtoService {
 
@@ -14,16 +17,19 @@ public class NamedDtoService {
         return namedDtoHashMap.get(id);
     }
 
-    public String findLongestString(NamedDto one) {
-       return findStringForObject(one);
-    }
+    public String findLongestString(int id) {
+        NamedDto namedDto = findNamedDtoById(id);
+        List<String> strings = new ArrayList<>();
 
-    private String findStringForObject(NamedDto one) {
-        if (one.getChildren().isEmpty()) {
-            return "";
+        if (namedDto.getChildren().isEmpty()) {
+            return namedDto.getName();
         } else {
-            return one.getName() + findStringForObject(findNamedDtoById(one.getChildren().get(0)));
+            for (int i = 0; i < namedDto.getChildren().size(); i++) {
+                strings.add(namedDto.getName() + findLongestString(namedDto.getChildren().get(i)));
+            }
+            strings.sort(Comparator.comparingInt(String::length).reversed());
+            return strings.get(0);
         }
-    }
 
+    }
 }
