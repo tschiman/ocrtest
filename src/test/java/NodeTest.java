@@ -1,3 +1,4 @@
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -44,6 +45,16 @@ public class NodeTest {
         nine.setParent(seven);
 
         List<Node> output = Node.orderByGeneration(new ArrayList<>(), Collections.singletonList(one));
+
+        Assert.assertEquals(1, output.get(0).getOrder());
+        Assert.assertEquals(2, output.get(1).getOrder());
+        Assert.assertEquals(3, output.get(2).getOrder());
+        Assert.assertEquals(4, output.get(3).getOrder());
+        Assert.assertEquals(5, output.get(4).getOrder());
+        Assert.assertEquals(6, output.get(5).getOrder());
+        Assert.assertEquals(7, output.get(6).getOrder());
+        Assert.assertEquals(8, output.get(7).getOrder());
+        Assert.assertEquals(9, output.get(8).getOrder());
     }
 
 }
